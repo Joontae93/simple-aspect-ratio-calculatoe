@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+import Header from './js/Header';
+import Output from './js/Output';
 function myFunction() {
 	// Get the text field
 	var copyText = document.getElementById('myInput');
@@ -16,8 +18,8 @@ function myFunction() {
 }
 const root = document.getElementById('app');
 function App() {
-	const [width, setWidth] = React.useState(16);
-	const [height, setHeight] = React.useState(9);
+	const [width, setWidth] = useState(16);
+	const [height, setHeight] = useState(9);
 	function handleChange({ target }) {
 		if ('width' === target.name) {
 			setWidth(target.value);
@@ -27,7 +29,7 @@ function App() {
 			console.error("Something's not working...");
 		}
 	}
-	const [aspectRatio, setAspectRatio] = React.useState('16 / 9');
+	const [aspectRatio, setAspectRatio] = useState('16 / 9');
 	function calculateAspectRatio() {
 		const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b)); // helper function to calculate greatest common divisor
 		const divisor = gcd(width, height); // calculate the greatest common divisor of width and height
@@ -35,9 +37,10 @@ function App() {
 		const denominator = height / divisor; // calculate the denominator of the fraction
 		setAspectRatio(`${numerator} / ${denominator}`); // return the aspect ratio as a string in fraction form
 	}
-	React.useEffect(calculateAspectRatio, [width, height]);
+	useEffect(calculateAspectRatio, [width, height]);
 	return (
 		<main>
+			<Header />
 			<form action="#">
 				<label htmlFor="width">Width</label>
 				<input
@@ -58,7 +61,7 @@ function App() {
 					onChange={handleChange}
 				/>
 			</form>
-			<span className="output">aspect-ratio: {aspectRatio} </span>
+			<Output aspectRatio={aspectRatio} />
 		</main>
 	);
 }

@@ -1,0 +1,15 @@
+form {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+
+	input {
+		max-width: 60%;
+	}
+	label {
+		font-weight: 700;
+		&:nth-child(3) {
+			margin-top: 2rem;
+		}
+	}
+}
