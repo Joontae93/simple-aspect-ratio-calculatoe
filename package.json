@@ -1,15 +1,22 @@
 {
-  "name": "kj-project-boilerplate",
+  "name": "simple-aspect-ratio-calculator",
   "version": "1.0.0",
-  "description": "A boilerplate for KJ's projects",
+  "description": "A simple aspect ratio calculator for CSS styles.",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "author": "KJ Roelke",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
-    "parcel": "^2.7.0"
+    "parcel": "^2.7.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
